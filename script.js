@@ -1,29 +1,49 @@
-let posicaoCartas = [" "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "," "];
-
+let posicaoCartas1 = [0,1,2,3,4,5,6,7,8,9];
+let posicaoCartas2 = [0,1,2,3,4,5,6,7,8,9];
 
 
 function definirCartas(posicaoCartas){
 
-    let i = 0;
-
-    while (i <= 20){
+    for (let i = posicaoCartas.length; i;){
         
-        let cartaSorteada = Math.random() * 10;
+        let cartaSorteada =  Math.random() * i-- | 0;;
 
-        cartaSemDecimal = cartaSorteada.toFixed(0)
+        let tpm = posicaoCartas[cartaSorteada]
 
-        posicaoCartas[i] = cartaSemDecimal
+        posicaoCartas[cartaSorteada] = posicaoCartas[i];
 
-            console.log("teste")
-            console.log(cartaSemDecimal);
-            //console.log(repetido);
-            console.log(posicaoCartas);
-            //posicaoCartas.push(cartaSemDecimal);
+        posicaoCartas[i] = tpm;
 
-        i++
+
+
     }
+
+    return posicaoCartas;
 }
 
+ let array1 = definirCartas(posicaoCartas1);
+ let array2 = definirCartas(posicaoCartas2);
+
+let cartasEmbaralhadas = [...array1 , ...array2]
 
 
-definirCartas(posicaoCartas);
+let tabuleiro = document.getElementById("tabuleiro")
+
+tabuleiro.addEventListener("click", (alvo)=>{
+
+    let idCartas = alvo.target.id
+
+    switch (idCartas){
+
+        case "1"
+            
+
+    }
+
+
+})
+
+
+
+
+ console.log(cartasEmbaralhadas)
