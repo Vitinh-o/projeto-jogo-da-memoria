@@ -1,28 +1,28 @@
-let posicaoCartas1 = [0,1,2,3,4,5,6,7,8,9];
-let posicaoCartas2 = [0,1,2,3,4,5,6,7,8,9];
+let posicaoCartas1 = [0,1,2,3,4,5,6,7,8,9]
+let posicaoCartas2 = [0,1,2,3,4,5,6,7,8,9]
+y = 0
 
 
 function definirCartas(posicaoCartas){
 
     for (let i = posicaoCartas.length; i;){
         
-        let cartaSorteada =  Math.random() * i-- | 0;;
+        let cartaSorteada =  Math.random() * i-- | 0
 
         let tpm = posicaoCartas[cartaSorteada]
 
-        posicaoCartas[cartaSorteada] = posicaoCartas[i];
+        posicaoCartas[cartaSorteada] = posicaoCartas[i]
 
-        posicaoCartas[i] = tpm;
-
-
-
+        posicaoCartas[i] = tpm
     }
 
     return posicaoCartas;
 }
 
- let array1 = definirCartas(posicaoCartas1);
- let array2 = definirCartas(posicaoCartas2);
+
+
+ let array1 = definirCartas(posicaoCartas1)
+ let array2 = definirCartas(posicaoCartas2)
 
 let cartasEmbaralhadas = [...array1 , ...array2]
 
@@ -31,13 +31,12 @@ let tabuleiro = document.getElementById("tabuleiro")
 
 tabuleiro.addEventListener("click", (alvo)=>{
 
-
     let idCartas = alvo.target.id
 
     let cartaClicada = alvo.target
 
-    let tentativa = idCartas
-    
+    let tentativa = []
+        
     switch (cartasEmbaralhadas[idCartas]){
 
         case 0:
@@ -102,16 +101,39 @@ tabuleiro.addEventListener("click", (alvo)=>{
 
     }
 
-    if(cartasEmbaralhadas[tentativa] == cartasEmbaralhadas[idCartas])
-    {
-        console.log("teste")
-    }
-
+    identificaCartas(idCartas, cartaClicada, tentativa)
 
 
 })
 
 
 
+function identificaCartas(){
+    
+    if(tentativa.length < 2)
+    {
+        tentativa[y] = idCartas
 
- console.log(cartasEmbaralhadas)
+        y++
+    }
+
+    if(tentativa[0] == tentativa[1])
+    {
+        console.log("teste")
+    }
+    else{
+        
+
+        cartaClicada.remove()
+
+    }
+
+    if(tentativa.length == 2){
+        
+        tentativa.shift()
+        tentativa.pop()
+        y = 0
+    }
+
+    console.log(cartasEmbaralhadas)
+}
