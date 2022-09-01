@@ -1,5 +1,7 @@
 let posicaoCartas1 = [0,1,2,3,4,5,6,7,8,9]
 let posicaoCartas2 = [0,1,2,3,4,5,6,7,8,9]
+let tentativa = []
+let cartasGuardadas = []
 y = 0
 
 
@@ -35,105 +37,129 @@ tabuleiro.addEventListener("click", (alvo)=>{
 
     let cartaClicada = alvo.target
 
-    let tentativa = []
+    let imagens 
         
     switch (cartasEmbaralhadas[idCartas]){
 
         case 0:
 
-            cartaClicada.innerHTML =  '<img src="./images/react.png" alt="" srcset=""></img>'
+            imagens = '<img src="./images/react.png" id="10" alt="" srcset=""></img>'
+            cartaClicada.innerHTML =  imagens
             console.log(cartaClicada)
             break
 
         case 1:
 
-            cartaClicada.innerHTML =  '<img src="./images/node.png" alt="" srcset="">'
+            imagens =  '<img src="./images/node.png" id="11" alt="" srcset="">'
+            cartaClicada.innerHTML =  imagens
             console.log(cartaClicada)
             break
 
         case 2:
 
-            cartaClicada.innerHTML =  '<img src="./images/mongo.png" alt="" srcset="">'
+            imagens =  '<img src="./images/mongo.png" id="12" alt="" srcset="">'
+            cartaClicada.innerHTML =  imagens
             console.log(cartaClicada)
             break
 
         case 3:
 
-            cartaClicada.innerHTML =  '<img src="./images/jquery.png" alt="">'
+            imagens = '<img src="./images/jquery.png" id="13" alt="">'
+            cartaClicada.innerHTML =  imagens
             console.log(cartaClicada)            
             break
 
          case 4:
 
-            cartaClicada.innerHTML =  '<img src="./images/javascript.png" alt="" srcset="">'
+            imagens = '<img src="./images/javascript.png" id="14" alt="" srcset="">'
+            cartaClicada.innerHTML =  imagens 
             console.log(cartaClicada)
             break
 
         case 5:
-
-            cartaClicada.innerHTML =  '<img src="./images/html.png" alt="">'
+            imagens = '<img src="./images/html.png" id="15" alt="">'
+            cartaClicada.innerHTML =  imagens
             console.log(cartaClicada)
             break
 
         case 6:
-
-            cartaClicada.innerHTML =  '<img src="./images/firebase.png" alt="" srcset="">'
+            imagens = '<img src="./images/firebase.png" id="16" alt="" srcset="">'
+            cartaClicada.innerHTML =  imagens 
             console.log(cartaClicada)
             break
 
         case 7:
-
-            cartaClicada.innerHTML =  '<img src="./images/electron.png" alt="">'
+            imagens = '<img src="./images/electron.png" id="17" alt="">'
+            cartaClicada.innerHTML =  imagens
             console.log(cartaClicada)
             break
 
         case 8:
-
-            cartaClicada.innerHTML =  '<img src="./images/css.png" alt="" srcset="">'
+            imagens = '<img src="./images/css.png" id="18" alt="" srcset="">'
+            cartaClicada.innerHTML =   imagens
             console.log(cartaClicada)
             break
 
         case 9:
-
-            cartaClicada.innerHTML =  '<img src="./images/bootstrap.png" alt="" srcset="">'
+            imagens = '<img src="./images/bootstrap.png" id="19" alt="" srcset="">'
+            cartaClicada.innerHTML =  imagens
             console.log(cartaClicada)
             break
 
     }
 
-    identificaCartas(idCartas, cartaClicada, tentativa)
+    identificaCartas(idCartas, cartaClicada, imagens)
 
+    
 
 })
 
 
+function identificaCartas(idCartas, cartaClicada, imagens){
 
-function identificaCartas(){
+
     
     if(tentativa.length < 2)
     {
-        tentativa[y] = idCartas
+
+        cartasGuardadas[y] = imagens
+        tentativa[y] = cartaClicada.children[0] 
 
         y++
+        console.log(cartasGuardadas)
     }
 
-    if(tentativa[0] == tentativa[1])
-    {
-        console.log("teste")
+    if(cartasGuardadas[0] != cartasGuardadas[1] && tentativa.length == 2)
+    {  
+    setTimeout(()=>{
+        
+
+        tentativa[0].remove()
+        tentativa[1].remove()
+
+     }, 100)
+       
     }
     else{
         
-
-        cartaClicada.remove()
+    //console.log("teste")
 
     }
 
-    if(tentativa.length == 2){
+
+    setTimeout(()=>{
+
+        if(tentativa.length == 2){
         
-        tentativa.shift()
-        tentativa.pop()
-        y = 0
-    }
 
-    console.log(cartasEmbaralhadas)
+            cartasGuardadas.shift()
+            cartasGuardadas.pop()
+
+            tentativa.shift()
+            tentativa.pop()
+            y = 0
+        }
+    },101)
+
+   
 }
