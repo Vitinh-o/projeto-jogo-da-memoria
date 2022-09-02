@@ -24,6 +24,21 @@ main{ height: 500px;
 
 .imagens{display: none;}
 
+h1{color: white; font-size: xx-large;}
+
+button{background-color: yellow;
+        border: none;
+        border-radius:7px;
+        padding: 12px;}
+
+#vitoria{position: relative;  
+            bottom: 275px;
+            right: 20px;
+            text-align: center;
+            display: none;
+            }
+
+
 
 
 /* @keyframes rotation{

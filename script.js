@@ -2,6 +2,7 @@ let posicaoCartas1 = [0,1,2,3,4,5,6,7,8,9]
 let posicaoCartas2 = [0,1,2,3,4,5,6,7,8,9]
 let tentativa = []
 let cartasGuardadas = []
+let = vitoria = []
 y = 0
 
 
@@ -133,16 +134,17 @@ function identificaCartas(idCartas, cartaClicada, imagens){
     {  
     setTimeout(()=>{
         
-
         tentativa[0].remove()
         tentativa[1].remove()
 
      }, 100)
        
     }
-    else{
-        
-    //console.log("teste")
+    else if(cartasGuardadas[0] === cartasGuardadas[1]){
+
+        vitoria.push("par")
+
+        telaVitoria(vitoria)
 
     }
 
@@ -161,5 +163,22 @@ function identificaCartas(idCartas, cartaClicada, imagens){
         }
     },101)
 
-   
+   }
+
+
+
+function telaVitoria(vitoria){
+    
+    console.log(vitoria)
+
+    if(vitoria.length == 10){
+
+       let telaFinal = document.getElementById("vitoria")
+       let fundoTela = document.getElementsByTagName("body")[0]
+       
+       document.body.style.backgroundColor = "rgba(0, 0, 0, 0.397);"
+       telaFinal.style.display = "block"
+     
+    }
+
 }
