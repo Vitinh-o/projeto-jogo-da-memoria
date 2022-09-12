@@ -176,9 +176,18 @@ function telaVitoria(vitoria){
        let telaFinal = document.getElementById("vitoria")
        let fundoTela = document.getElementsByTagName("body")[0]
        
-       document.body.style.backgroundColor = "rgba(0, 0, 0, 0.397);"
+       document.body.style.backgroundColor = "rgba(0, 0, 0, 0.781)"
        telaFinal.style.display = "block"
      
     }
+
+
+}
+
+
+
+function restart(){
+
+    window.location.reload()
 
 }
